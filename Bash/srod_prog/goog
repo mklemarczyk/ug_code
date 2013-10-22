@@ -1,0 +1,4 @@
+find: `/etc/ssl/private': Brak dostępu
+find: `/etc/cups/ssl': Brak dostępu
+find: `/etc/ppp/peers': Brak dostępu
+find: `/etc/chatscripts': Brak dostępu
