@@ -10,20 +10,20 @@ def odwrotnosc_mod(a, b):
 # x mod k3 = r3
 # ...
 
-k = [3, 5, 7] # klasa abstrakcji (musz? by? cia?em, czyli liczbami pierwszymi)
-r = [2, 3, 5] # reprezentant klasy abstrakcji
+k = [3, 5, 7] # klasy abstrakcji (musza byc cialem, czyli liczbami pierwszymi)
+r = [2, 3, 5] # reprezentanci klas abstrakcji
 
 #Obliczenie ilosci kombinacji
 ilosc_kombinacji = 1
 for ki in k:
     ilosc_kombinacji = ilosc_kombinacji * ki
 
-#Obliczanie wspó?czynników m
+#Obliczanie wspólczynników m
 m = []
 for ki in k:
     m.append(ilosc_kombinacji / ki)
 
-#Odwrotno?? liczby m (n = 1/m)
+#Odwrotnosc liczby m w modulo k (n = 1/m)
 n = []
 for i in range(len(r)):
     n.append(odwrotnosc_mod(m[i], k[i]))
