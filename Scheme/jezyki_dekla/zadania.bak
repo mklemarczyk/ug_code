@@ -1,0 +1,63 @@
+#lang racket
+;16 ((iter (lambda (x) (* x x)) 4) 2)
+(define iter
+  (lambda (f n)
+  (cond ((eq? n 0) (lambda (x) x))
+        ((eq? n 1) f)
+        (else
+          (lambda (x) (f ((iter f (- n 1)) x)))
+        )
+    )
+  )
+)
+
+;17a - undefined
+(define prod
+  (lambda (l)
+    (foldl (lambda (a b) (- a b)) 0 l)))
+  
+
+;17b
+(define length
+  (lambda (l)
+    (foldl (lambda (a b) (+ a 1)) 0 l)))
+
+;17c
+(define member
+  (lambda (x l)
+    (foldl (lambda (a b) (+ a 1)) 0 l)))
+
+;17d
+(define delete
+  (lambda (l)
+    (foldl (lambda (a b) (+ a 1)) 0 l)))
+
+;17e (reverse '(1 2 3 4 5 6 7 8))
+(define reverse
+  (lambda (l)
+    (foldl (lambda (a b) (cons a b)) '() l)))
+
+
+
+
+;18
+
+
+
+;22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
