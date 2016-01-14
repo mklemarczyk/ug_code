@@ -1,5 +1,5 @@
 #lang racket
-
+;2
 (define nwd
   (lambda (a b)
     (cond ((> a b) (nwd (- a b) b))
@@ -12,8 +12,7 @@
     (/ (* a b) (nwd a b))))
 
 
-
-
+;3
 (define new.<
   (lambda (x y)
     (< x y)))
@@ -38,13 +37,13 @@
   (lambda (x y)
     (or (< x y) (< y x))))
 
-
+;4
 (define same-values?
   (lambda (p1 p2 x y)
     (equal? (p1 x y) (p2 x y))))
 
 
-
+;5
 (define odd-help?
   (lambda (n x)
     (if (zero? n)
@@ -161,6 +160,29 @@
 (define mapf
   (lambda (f l)
     (reverse (mapf-help f l '()))))
+
+
+
+
+;16 ((iter (lambda (x) (* x x)) 4) 2)
+(define iter
+  (lambda (f n)
+  (cond ((eq? n 0) (lambda (x) x))
+        ((eq? n 1) f)
+        (else
+          (lambda (x) (f ((iter f (- n 1)) x)))
+        )
+    )
+  )
+)
+
+;17a
+
+
+
+
+
+
 
 
 
