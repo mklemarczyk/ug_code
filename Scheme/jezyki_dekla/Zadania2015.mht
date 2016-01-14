@@ -1,26 +1,26 @@
 From: "Saved by Internet Explorer 11"
 Subject: Christoph Schwarzweller: Scheme
-Date: Fri, 13 Nov 2015 12:06:55 +0100
+Date: Fri, 4 Dec 2015 13:15:22 +0100
 MIME-Version: 1.0
 Content-Type: text/html;
-	charset="Windows-1252"
+	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Content-Location: https://inf.ug.edu.pl/~schwarzw/zadania/ZadScheme2015.html
 X-MimeOLE: Produced By Microsoft MimeOLE V10.0.10011.16384
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><META content=3D"IE=3D5.0000" =
 http-equiv=3D"X-UA-Compatible">
 <TITLE>Christoph Schwarzweller: Scheme</TITLE>=20
 <META http-equiv=3D"Content-Type" content=3D"text/html; =
-charset=3Dwindows-1252"><LINK=20
-href=3D"../cs.css" rel=3D"stylesheet" type=3D"text/css">=20
-<META name=3D"GENERATOR" content=3D"MSHTML 11.00.10240.16566"></HEAD>=20
+charset=3Dutf-8"><LINK href=3D"../cs.css"=20
+rel=3D"stylesheet" type=3D"text/css">=20
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.10586.17"></HEAD>=20
 <BODY class=3D"main"><BR>
 <H2> Zadania (Scheme) </H2>
 <OL>
-  <LI>  Jakie s&#261; warto&#347;ci nast&#281;puj&#261;cych =
-wyra&#380;e&#324;? <BR><BR>
+  <LI>  Jakie s=C4=85 warto=C5=9Bci nast=C4=99puj=C4=85cych =
+wyra=C5=BCe=C5=84? <BR><BR>
 <PRE>=3D=3D&gt; 10 <BR><BR>=0A=
 =3D=3D&gt; (+ 5 3 4) <BR><BR>=0A=
 =3D=3D&gt; (- 9 1) <BR><BR>=0A=
@@ -39,46 +39,46 @@ wyra&#380;e&#324;? <BR><BR>
           ((=3D b 4) (+ 6 7 a))=0A=
           (else    25))=0A=
 </PRE>
-  <LI>  Prosz&#281; napisa&#263; funkcje <TT>nwd a b</TT> oraz <TT>nww a =
-b</TT>, kt=F3rych=20
-  warto&#347;ciami s&#261; najwi&#281;kszy wsp=F3lny dzielnik i =
-najmniejsza wsp=F3lna=20
-  wielokrotno&#347;&#263;. <BR><BR>
-  <LI>Prosz&#281; napisa&#263; funkcj&#281; <TT>(new.&lt; x y)</TT>, =
+  <LI>  Prosz=C4=99 napisa=C4=87 funkcje <TT>nwd a b</TT> oraz <TT>nww a =
+b</TT>, kt=C3=B3rych=20
+  warto=C5=9Bciami s=C4=85 najwi=C4=99kszy wsp=C3=B3lny dzielnik i =
+najmniejsza wsp=C3=B3lna=20
+  wielokrotno=C5=9B=C4=87. <BR><BR>
+  <LI>Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(new.&lt; x y)</TT>, =
 <TT>(new.&gt; x y)</TT>,=20
   <TT>(new.=3D x y)</TT>, <TT>(new.&lt;=3D x y)</TT>, <TT>(new.&gt;=3D x =
 y)</TT> oraz=20
-  <TT>(new.&lt;&gt; x y)</TT>. Nale&#380;y z wbudowanych funkcji =
-u&#380;ywa&#263; wy&#322;&#261;cznie=20
-  funckcj&#281; <TT>&lt;</TT> (oraz predykaty oczywi&#347;cie). <BR><BR>
-  <LI> Prosz&#281; napisa&#263; funkcj&#281; <TT>(same-values? p1 p2 x =
-y)</TT>, kt=F3rej warto&#347;&#263;=20
-  jest <TT>#t</TT>, je&#380;eli <TT>(p1 x y)</TT> i <TT>(p2 x y)</TT> =
-maj&#261; t&#261; sam&#261;=20
-  warto&#347;&#263; i <TT>#f</TT> w przecziwnym przypadku.=20
-<PRE>Przyk&#322;ady: =3D=3D&gt; (same-values? =3D new.=3D 3 1)=0A=
+  <TT>(new.&lt;&gt; x y)</TT>. Nale=C5=BCy z wbudowanych funkcji =
+u=C5=BCywa=C4=87 wy=C5=82=C4=85cznie=20
+  funckcj=C4=99 <TT>&lt;</TT> (oraz predykaty oczywi=C5=9Bcie). <BR><BR>
+  <LI> Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(same-values? p1 p2 x =
+y)</TT>, kt=C3=B3rej warto=C5=9B=C4=87=20
+  jest <TT>#t</TT>, je=C5=BCeli <TT>(p1 x y)</TT> i <TT>(p2 x y)</TT> =
+maj=C4=85 t=C4=85 sam=C4=85=20
+  warto=C5=9B=C4=87 i <TT>#f</TT> w przecziwnym przypadku.=20
+<PRE>Przyk=C5=82ady: =3D=3D&gt; (same-values? =3D new.=3D 3 1)=0A=
            #t=0A=
            =3D=3D&gt; (same-values? &lt; &gt; 2 3)=0A=
            #f=0A=
 </PRE>
-  <LI> Prosz&#281; napisa&#263; funkcje <TT>(odd? n)</TT> oraz =
-<TT>(even? n)</TT>, kt=F3re=20
-  sprawdzaj&#261;, czy liczba naturalna <TT>n</TT> jest nieparzysta =
-wzgl&#281;dnie=20
-  parzysta. Nale&#380;y u&#380;ywa&#263; wy&#322;&#261;cznie funkcje =
+  <LI> Prosz=C4=99 napisa=C4=87 funkcje <TT>(odd? n)</TT> oraz =
+<TT>(even? n)</TT>, kt=C3=B3re=20
+  sprawdzaj=C4=85, czy liczba naturalna <TT>n</TT> jest nieparzysta =
+wzgl=C4=99dnie=20
+  parzysta. Nale=C5=BCy u=C5=BCywa=C4=87 wy=C5=82=C4=85cznie funkcje =
 <TT>#t</TT>, <TT>#f</TT>,=20
   <TT>zero?</TT> oraz "<TT>-1</TT>".<BR><BR>
-  <LI> Prosz&#281; napisa&#263; rekurencyjn&#261; oraz iteracyn&#261; =
-funkcj&#281; <TT>(fib n)</TT>,=20
-  kt=F3ra obliczy <TT>n</TT>-t&#261; liczb&#281; Fibonacci. <BR><BR>
-  <LI>Pot&#281;gowanie b^e mo&#380;na szybko wykona&#263; =
-u&#380;ywaj&#261;c b^e =3D (b^(e/2))^2. Prosz&#281;=20
-  napisa&#263; rekurencyjn&#261; oraz iteracyjn&#261; funkcj&#281; =
+  <LI> Prosz=C4=99 napisa=C4=87 rekurencyjn=C4=85 oraz iteracyn=C4=85 =
+funkcj=C4=99 <TT>(fib n)</TT>,=20
+  kt=C3=B3ra obliczy <TT>n</TT>-t=C4=85 liczb=C4=99 Fibonacci. <BR><BR>
+  <LI>Pot=C4=99gowanie b^e mo=C5=BCna szybko wykona=C4=87 =
+u=C5=BCywaj=C4=85c b^e =3D (b^(e/2))^2. Prosz=C4=99=20
+  napisa=C4=87 rekurencyjn=C4=85 oraz iteracyjn=C4=85 funkcj=C4=99 =
 <TT>(exp b e)</TT> na podstawie=20
-  tej w&#322;a&#347;ciwo&#347;ci. U&#380;ywaj&#261;c model =
-&#347;rodowiska, prosz&#281; pokazywa&#263;, jak wyra&#380;enie=20
+  tej w=C5=82a=C5=9Bciwo=C5=9Bci. U=C5=BCywaj=C4=85c model =
+=C5=9Brodowiska, prosz=C4=99 pokazywa=C4=87, jak wyra=C5=BCenie=20
   <TT>(exp 2 6)</TT> zostaje ewaluowane. <BR><BR>
-  <LI> Niech b&#281;d&#261; dane nast&#281;puj&#261;ce definicje =
+  <LI> Niech b=C4=99d=C4=85 dane nast=C4=99puj=C4=85ce definicje =
 funkcji.=20
 <PRE>(define m 1)             (define n 1)=0A=
 (define (p m)            (define (q n)=0A=
@@ -86,90 +86,92 @@ funkcji.=20
 (define (pp x)                 (+ x n))=0A=
    (+ x m))                 (qq 5))=0A=
 </PRE>=20
-  Jakie s&#261; warto&#347;ci wyrazie&#324; <TT>(p 11)</TT> i <TT>(q =
-11)</TT>?  Prosz&#281;=20
-  wyt&#322;umaczy&#263; wyniki u&#380;ywaj&#261;c model &#347;rodowiska. =
+  Jakie s=C4=85 warto=C5=9Bci wyrazie=C5=84 <TT>(p 11)</TT> i <TT>(q =
+11)</TT>?  Prosz=C4=99=20
+  wyt=C5=82umaczy=C4=87 wyniki u=C5=BCywaj=C4=85c model =C5=9Brodowiska. =
 <BR><BR>
-  <LI> Prosz&#281; napisa&#263; funkcj&#281; <TT>(product term a next =
+  <LI> Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(product term a next =
 b)</TT> analogicznie do=20
-  funkcji <TT>sum</TT> z wyk&#322;adu. Prosz&#281; pokazywa&#263;, jak =
-u&#380;ywaj&#261;c <TT>=20
-  product</TT> mo&#380;na definiowa&#263; funkcj&#281; <TT>silnia</TT> =
-oraz przybli&#380;a&#263; <FONT=20
-  face=3D"Symbol" size=3D"2">p</FONT> na podstawie formu&#322;y &nbsp;   =
+  funkcji <TT>sum</TT> z wyk=C5=82adu. Prosz=C4=99 pokazywa=C4=87, jak =
+u=C5=BCywaj=C4=85c <TT>=20
+  product</TT> mo=C5=BCna definiowa=C4=87 funkcj=C4=99 <TT>silnia</TT> =
+oraz przybli=C5=BCa=C4=87 <FONT=20
+  face=3D"Symbol" size=3D"2">p</FONT> na podstawie formu=C5=82y &nbsp;   =
 <FONT face=3D"Symbol"=20
-  size=3D"2">p</FONT>/4 =3D 2 =B7 4 =B7 4 =B7 6 =B7 6 =B7 8 =B7=B7=B7 / =
-3 =B7 3 =B7 5 =B7 5 =B7 7 =B7 7 =B7=B7=B7 .=20
+  size=3D"2">p</FONT>/4 =3D 2 =C2=B7 4 =C2=B7 4 =C2=B7 6 =C2=B7 6 =C2=B7 =
+8 =C2=B7=C2=B7=C2=B7 / 3 =C2=B7 3 =C2=B7 5 =C2=B7 5 =C2=B7 7 =C2=B7 7 =
+=C2=B7=C2=B7=C2=B7 .=20
   <BR><BR>
-  <LI> Prosz&#281; napisa&#263; funkcj&#281; <TT>(accumulate combiner =
+  <LI> Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(accumulate combiner =
 null-value term a next=20
-  b)</TT>, kt=F3ra jest uog=F3lnieniem funkcji <TT>sum</TT> i =
+  b)</TT>, kt=C3=B3ra jest uog=C3=B3lnieniem funkcji <TT>sum</TT> i =
 <TT>prod</TT>.
    Argumenty <TT>term</TT>, <TT>next</TT>, <TT>a</TT> i <TT>b</TT> =
-zachowuj&#261; to=20
-  same znaczenie ni&#380; w funkcjach <TT>sum</TT> i <TT>prod</TT>.  =20
-  <TT>combiner</TT> jest dwuargumentow&#261; funkcj&#261;, kt=F3ra =
+zachowuj=C4=85 to=20
+  same znaczenie ni=C5=BC w funkcjach <TT>sum</TT> i <TT>prod</TT>.  =20
+  <TT>combiner</TT> jest dwuargumentow=C4=85 funkcj=C4=85, kt=C3=B3ra =
 opisuja, jak <TT>(term=20
-  a)</TT> zostaje dodane do akkumulacji dalszych term=F3w.  =
+  a)</TT> zostaje dodane do akkumulacji dalszych term=C3=B3w.  =
 <TT>null-value</TT>=20
-  jest warto&#347;ci&#261; inicjaln&#261; do u&#380;ywania w =
-ko&#324;cowym przypadku. <BR>Prosz&#281;=20
-  pokazywa&#263;, jak mo&#380;na definiowa&#263; funkcje <TT>sum</TT> i =
-<TT>prod</TT> u&#380;ywaj&#261;c=20
+  jest warto=C5=9Bci=C4=85 inicjaln=C4=85 do u=C5=BCywania w =
+ko=C5=84cowym przypadku. <BR>Prosz=C4=99=20
+  pokazywa=C4=87, jak mo=C5=BCna definiowa=C4=87 funkcje <TT>sum</TT> i =
+<TT>prod</TT> u=C5=BCywaj=C4=85c=20
   <TT>accumulate</TT>. <BR><BR>
-  <LI> Nawet funkcj&#281; <TT>accumulate</TT> mo&#380;na dalej =
-uog=F3lni&#263;. Prosz&#281; napisa&#263;=20
-  funkcj&#281; <TT>filter-accumulate</TT>, kt=F3ra ma dodatkowy argument =
-<TT>pred</TT>.=20
+  <LI> Nawet funkcj=C4=99 <TT>accumulate</TT> mo=C5=BCna dalej =
+uog=C3=B3lni=C4=87. Prosz=C4=99 napisa=C4=87=20
+  funkcj=C4=99 <TT>filter-accumulate</TT>, kt=C3=B3ra ma dodatkowy =
+argument <TT>pred</TT>.=20
    <TT>pred</TT> jest (jednoargumentowym) predykatem a=20
   <TT>filter-accumulate</TT> dodaje <TT>(term a)</TT> do wynika tylko, =
-je&#380;eli=20
-  <TT>a</TT> spe&#322;nie predykat <TT>pred</TT>.  =
-<BR>U&#380;ywaj&#261;c=20
-  <TT>filter-accumulate</TT> prosz&#281; obliczy&#263; sum&#281; =
-kwadrat=F3w liczb pierwszych w=20
+je=C5=BCeli=20
+  <TT>a</TT> spe=C5=82nie predykat <TT>pred</TT>.  =
+<BR>U=C5=BCywaj=C4=85c=20
+  <TT>filter-accumulate</TT> prosz=C4=99 obliczy=C4=87 sum=C4=99 =
+kwadrat=C3=B3w liczb pierwszych w=20
   interwale [<TT>a</TT>,<TT>b</TT>] oraz produkt wszystkich liczb =
 naturalnych=20
-  <TT>i</TT> mniejsze ni&#380; <TT>n</TT>, takie &#380;e <TT> nwd(i,n) =
+  <TT>i</TT> mniejsze ni=C5=BC <TT>n</TT>, takie =C5=BCe <TT> nwd(i,n) =
 =3D 1</TT>. <BR><BR>
-  <LI> Niech b&#281;dzie dana nast&#281;puj&#261;ca definicja funkcji =
+  <LI> Niech b=C4=99dzie dana nast=C4=99puj=C4=85ca definicja funkcji =
 <TT>(comb f g)</TT>.=20
 <PRE>(define (comb f g)=0A=
    (lambda (x) (f (g x))))=0A=
-</PRE>U&#380;ywaj&#261;c model=20
-  &#347;dowiska, prosz&#281; pokazywa&#263; jak wyra&#380;enie =
+</PRE>U=C5=BCywaj=C4=85c model=20
+  =C5=9Bdowiska, prosz=C4=99 pokazywa=C4=87 jak wyra=C5=BCenie =
 <TT>((comb square double) 5)</TT>=20
   zostajy ewaluowane. <BR><BR>
-  <LI> Prosz&#281; napisa&#263; funkcj&#281; <TT>(deriv f dx)</TT>, =
-kt=F3r&#261; warto&#347;&#263; jest funkcj&#261;,=20
-  kt=F3ra przybli&#380;a funkcj&#281; <TT>f'</TT> u&#380;ywaj&#261;c =
-formu&#322;&#281;=20
+  <LI> Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(deriv f dx)</TT>, =
+kt=C3=B3r=C4=85 warto=C5=9B=C4=87 jest funkcj=C4=85,=20
+  kt=C3=B3ra przybli=C5=BCa funkcj=C4=99 <TT>f'</TT> u=C5=BCywaj=C4=85c =
+formu=C5=82=C4=99=20
 <PRE> Df(x) =3D (f(x+dx) - f(x)) / dx.=0A=
 </PRE>
-<PRE>Przyk&#322;ad:  =3D=3D&gt; ((derive cube .001) 5)=0A=
+<PRE>Przyk=C5=82ad:  =3D=3D&gt; ((derive cube .001) 5)=0A=
            75.015=0A=
 </PRE>
-  <LI> Prosz&#281; napisa&#263; nast&#281;puj&#261;ce funkcje dla list: =
+  <LI> Prosz=C4=99 napisa=C4=87 nast=C4=99puj=C4=85ce funkcje dla list: =
 <BR><BR>a) <TT>(append l=20
-  m)</TT>, kt=F3ra konkatenuje listy <TT>l</TT> i <TT>m</TT>.<BR><BR>b)=20
-  <TT>(reverse l)</TT>, kt=F3ra obr=F3ci list&#281; =
+  m)</TT>, kt=C3=B3ra konkatenuje listy <TT>l</TT> i =
+<TT>m</TT>.<BR><BR>b)=20
+  <TT>(reverse l)</TT>, kt=C3=B3ra obr=C3=B3ci list=C4=99 =
 <TT>l</TT>.<BR><BR>c) <TT>(last=20
-  l)</TT>, kt=F3ra znajduje ostatni element w liscie =
+  l)</TT>, kt=C3=B3ra znajduje ostatni element w liscie =
 <TT>l</TT>.<BR><BR>d)=20
-  <TT>(delete x l)</TT>, kt=F3ra skasuje element <TT>x</TT> z listy=20
+  <TT>(delete x l)</TT>, kt=C3=B3ra skasuje element <TT>x</TT> z listy=20
   <TT>l</TT>.<BR><BR>
-  <LI> a) Prosz&#281; napisa&#263; funkcj&#281; <TT>(square-list =
-l)</TT>, kt=F3rej warto&#347;&#263; jest=20
-  list&#261; kwadrat=F3w element=F3w listy <TT>l</TT>. <BR><BR>b) =
-Prosz&#281; napisa&#263; funkcj&#281;=20
-  <TT>(mapf f l)</TT>, kt=F3rej warto&#347;ci&#261; jest lista =
-warto&#347;ci <TT>f(e)</TT> dla=20
-  wszystkich element=F3w <TT>e</TT> w liscie <TT>l</TT>. <BR><BR>
-  <LI>  Prosz&#281; zdefiniowa&#263; funkcj&#281; <TT>(iter f n)</TT>, =
-kt=F3rej warto&#347;ci&#261; jest=20
+  <LI> a) Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(square-list =
+l)</TT>, kt=C3=B3rej warto=C5=9B=C4=87 jest=20
+  list=C4=85 kwadrat=C3=B3w element=C3=B3w listy <TT>l</TT>. <BR><BR>b) =
+Prosz=C4=99 napisa=C4=87 funkcj=C4=99=20
+  <TT>(mapf f l)</TT>, kt=C3=B3rej warto=C5=9Bci=C4=85 jest lista =
+warto=C5=9Bci <TT>f(e)</TT> dla=20
+  wszystkich element=C3=B3w <TT>e</TT> w liscie <TT>l</TT>. <BR><BR>
+  <LI>  Prosz=C4=99 zdefiniowa=C4=87 funkcj=C4=99 <TT>(iter f n)</TT>, =
+kt=C3=B3rej warto=C5=9Bci=C4=85 jest=20
   funkcja <TT>f<SUP>n</SUP></TT>. <BR><BR>
-  <LI> U&#380;ywaj&#261;c funkcj&#281; <TT>fold</TT> prosz&#281; =
-zdefiniowa&#263; funkcje <BR><BR>     a)=20
+  <LI> U=C5=BCywaj=C4=85c funkcj=C4=99 <TT>fold</TT> prosz=C4=99 =
+zdefiniowa=C4=87 funkcje <BR><BR>     a)=20
   <TT>(prod l)</TT><BR><BR>     b) <TT>(length l)</TT><BR><BR>     c)=20
   <TT>(member x l)</TT><BR><BR>     c) <TT>(delete l)</TT> <BR><BR>     =
 d)=20
@@ -177,77 +179,77 @@ d)=20
 <li> Prosz&#x0119; zdefiniowa&#263; funkcj&#x0119; <tt>search</tt>, =
 kt&#x00F3;ra znajduje punkt zerowy danej funkcji <tt>f</tt>. <br><br>=0A=
 -->=20
-  <LI> Prosz&#281; zdefiniowa&#263; arytmetyk&#281; liczb wymiernich na =
+  <LI> Prosz=C4=99 zdefiniowa=C4=87 arytmetyk=C4=99 liczb wymiernich na =
 podstawie liczb=20
-  ca&#322;kowitych. <BR><BR>
-  <LI> Obiekty nie b&#281;d&#261;ce parami nazywaj&#261; si&#281; atomy. =
-Prosz&#281; napisa&#263; funkcj&#281;,=20
-  kt=F3ra <BR><BR>a) sprawdza, czy w liscie <TT>l</TT> znajduj&#261; =
-si&#281; wy&#322;&#261;cznie=20
-  atomy. <BR><BR>b) obliczy, ile jest atom=F3w w liscie =
+  ca=C5=82kowitych. <BR><BR>
+  <LI> Obiekty nie b=C4=99d=C4=85ce parami nazywaj=C4=85 si=C4=99 atomy. =
+Prosz=C4=99 napisa=C4=87 funkcj=C4=99,=20
+  kt=C3=B3ra <BR><BR>a) sprawdza, czy w liscie <TT>l</TT> znajduj=C4=85 =
+si=C4=99 wy=C5=82=C4=85cznie=20
+  atomy. <BR><BR>b) obliczy, ile jest atom=C3=B3w w liscie =
 <TT>l</TT>.<BR><BR>
-  <LI> Prosz&#281; napisa&#263; funkcj&#281; <TT>(member2 x l)</TT>, =
-kt=F3 sprawdza, czy gdzie&#347; w=20
-  liscie <TT>l</TT> znajduje si&#281; <TT>x</TT>.=20
-<PRE>Przyk&#322;ady: =3D=3D&gt; (member2 'a '(b (c a) b))=0A=
+  <LI> Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(member2 x l)</TT>, =
+kt=C3=B3 sprawdza, czy gdzie=C5=9B w=20
+  liscie <TT>l</TT> znajduje si=C4=99 <TT>x</TT>.=20
+<PRE>Przyk=C5=82ady: =3D=3D&gt; (member2 'a '(b (c a) b))=0A=
            #t=0A=
            =3D=3D&gt; (member2 '(a) '(b (c (a) d) e))=0A=
            #t=0A=
            =3D=3D&gt; (member2 '(a) '(b c a))=0A=
            #f=0A=
 </PRE>
-  <LI> Prosz&#281; powi&#281;ksza&#263; funkcj&#281; <TT>deriv</TT> tak, =
-&#380;eby te&#380; mog&#322;a traktowa&#263;=20
+  <LI> Prosz=C4=99 powi=C4=99ksza=C4=87 funkcj=C4=99 <TT>deriv</TT> tak, =
+=C5=BCeby te=C5=BC mog=C5=82a traktowa=C4=87=20
   termy typu <TT>u^n</TT> (na podstawie <TT> d(u^n) / dx =3D n * u^(n-1) =
 * du / dx=20
   </TT>). <BR><BR>
-  <LI> Prosz&#281; implementowa&#263; arytmetyk&#281; liczb zespolonych =
-<BR><BR>a) u&#380;ywaj&#261;c=20
-  metod&#281; "manifest types". <BR><BR>b) u&#380;ywaj&#261;c =
-metod&#281; "message passing".=20
+  <LI> Prosz=C4=99 implementowa=C4=87 arytmetyk=C4=99 liczb zespolonych =
+<BR><BR>a) u=C5=BCywaj=C4=85c=20
+  metod=C4=99 "manifest types". <BR><BR>b) u=C5=BCywaj=C4=85c =
+metod=C4=99 "message passing".=20
 <BR><BR>
-  <LI> W <TT>Scheme</TT> te&#380; mo&#380;na pisa&#263; funkcje z =
-dowoln&#261; ilo&#347;ci&#261; argument=F3w:=20
+  <LI> W <TT>Scheme</TT> te=C5=BC mo=C5=BCna pisa=C4=87 funkcje z =
+dowoln=C4=85 ilo=C5=9Bci=C4=85 argument=C3=B3w:=20
 <PRE> (define (f x y z . l) (...))=0A=
-</PRE>oznacza, &#380;e funkcja <TT> f </TT> ma=20
+</PRE>oznacza, =C5=BCe funkcja <TT> f </TT> ma=20
   conajmniej trzy argumenty (<TT>x</TT>,<TT>y</TT> i <TT> z</TT>). =
-Je&#380;eli <TT> f=20
-  </TT> dostaje wi&#281;cej ni&#380; trzy  argumenty, dodatkowe =
-argumenty zostaj&#261; zapisane=20
-  do listy <TT> l </TT>. <BR><BR> a)  Prosz&#281; napisa&#263; =
-funkcj&#281; <TT>plus</TT>,=20
-  kt=F3ra podsumuje dowoln&#261; ilo&#347;&#263; liczb.<BR><BR> b) =
-Prosz&#281; napisa&#263; funkcj&#281;=20
-  <TT>par</TT> dla dowolniej ilo&#347;ci (jednoargumentowych) funkcji =
+Je=C5=BCeli <TT> f=20
+  </TT> dostaje wi=C4=99cej ni=C5=BC trzy  argumenty, dodatkowe =
+argumenty zostaj=C4=85 zapisane=20
+  do listy <TT> l </TT>. <BR><BR> a)  Prosz=C4=99 napisa=C4=87 =
+funkcj=C4=99 <TT>plus</TT>,=20
+  kt=C3=B3ra podsumuje dowoln=C4=85 ilo=C5=9B=C4=87 liczb.<BR><BR> b) =
+Prosz=C4=99 napisa=C4=87 funkcj=C4=99=20
+  <TT>par</TT> dla dowolniej ilo=C5=9Bci (jednoargumentowych) funkcji =
 f<SUB>i</SUB>.=20
-  Warto&#347;&#263; funkcji <TT>par</TT> jest (jednoargumentow&#261;) =
-funkcj&#261;, kt=F3ra dla=20
-  argumenta <TT>x</TT> obliczy list&#281; wszystkich=20
-  <BR>&nbsp;&nbsp;&nbsp;&nbsp;warto&#347;ci <TT>f<SUB>i</SUB>(x)</TT>. =20
-<PRE>&nbsp;&nbsp;Przyk&#322;ady: =3D=3D&gt; ((par id square cube) 3)=0A=
+  Warto=C5=9B=C4=87 funkcji <TT>par</TT> jest (jednoargumentow=C4=85) =
+funkcj=C4=85, kt=C3=B3ra dla=20
+  argumenta <TT>x</TT> obliczy list=C4=99 wszystkich=20
+  <BR>&nbsp;&nbsp;&nbsp;&nbsp;warto=C5=9Bci <TT>f<SUB>i</SUB>(x)</TT>. =20
+<PRE>&nbsp;&nbsp;Przyk=C5=82ady: =3D=3D&gt; ((par id square cube) 3)=0A=
              (3 9 27) =0A=
              =3D=3D&gt; ((par double double) 5)=0A=
              (10 10)=0A=
 </PRE>
-  <LI> Dlaczego wyra&#380;enie <TT>if</TT> nie mo&#380;na sam =
-definiowa&#263; w nast&#281;puj&#261;cy=20
-  spos=F3b?=20
+  <LI> Dlaczego wyra=C5=BCenie <TT>if</TT> nie mo=C5=BCna sam =
+definiowa=C4=87 w nast=C4=99puj=C4=85cy=20
+  spos=C3=B3b?=20
 <PRE>(define (new-if warunek alternatywa1 alternatywa2)=0A=
    (cond (warunek alternatywa1)=0A=
          (else    alternatywa2)))=0A=
 </PRE>
-  <LI> Prosz&#281; napisa&#263; funkcj&#281; <TT>(ewal wyra&#380;enie =
-warto&#347;ci)</TT>, kt=F3ra oblicy=20
-  wynik dla wyra&#380;e&#324; boolowskich. <TT> wyra&#380;enie </TT> =
-jest list&#261;, kt=F3rej=20
-  pierwszym elementem jest "typ" wyra&#380;enia, a =
-nast&#281;pne<BR>elementy tej listy, to=20
-  podwyra&#380;enia; na przyk&#322;ad lista <TT>'(and x (not y))</TT> =
+  <LI> Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(ewal wyra=C5=BCenie =
+warto=C5=9Bci)</TT>, kt=C3=B3ra oblicy=20
+  wynik dla wyra=C5=BCe=C5=84 boolowskich. <TT> wyra=C5=BCenie </TT> =
+jest list=C4=85, kt=C3=B3rej=20
+  pierwszym elementem jest "typ" wyra=C5=BCenia, a =
+nast=C4=99pne<BR>elementy tej listy, to=20
+  podwyra=C5=BCenia; na przyk=C5=82ad lista <TT>'(and x (not y))</TT> =
 reprezentuje=20
-  wyra&#380;enie <TT>x&#8743;=ACy</TT>. <TT> warto&#347;ci</TT> jest =
-list&#261;, w kt=F3rej znaduj&#261; si&#281;=20
-  warto&#347;ci zmiennych.=20
-<PRE>Przyk&#322;ady: =3D=3D&gt; (define w '((x . #f) (y . #t) (z . #f)))=0A=
+  wyra=C5=BCenie <TT>x=E2=88=A7=C2=ACy</TT>. <TT> warto=C5=9Bci</TT> =
+jest list=C4=85, w kt=C3=B3rej znaduj=C4=85 si=C4=99=20
+  warto=C5=9Bci zmiennych.=20
+<PRE>Przyk=C5=82ady: =3D=3D&gt; (define w '((x . #f) (y . #t) (z . #f)))=0A=
            w=0A=
            =3D=3D&gt; (ewal '(and y (not x)) w)=0A=
            #t=0A=
@@ -257,32 +259,34 @@ list&#261;, w kt=F3rej znaduj&#261; si&#281;=20
            #t=0A=
 </PRE>
   <LI> Niech <TT> a<SUB>1</SUB></TT>,  <TT>a<SUB>2</SUB></TT>, ... =
-b&#281;d&#261;=20
-  wyra&#380;enami. Regu&#322;a jest dana w formie=20
-  <TT>{a<SUB>i<SUB>1</SUB></SUB>,...a<SUB>i<SUB>n</SUB></SUB>} &#8594;=20
-  a<SUB>i</SUB></TT>.  Regu&#322;a jest faktem, je&#380;eli <TT>n</TT> =
+b=C4=99d=C4=85=20
+  wyra=C5=BCenami. Regu=C5=82a jest dana w formie=20
+  <TT>{a<SUB>i<SUB>1</SUB></SUB>,...a<SUB>i<SUB>n</SUB></SUB>} =E2=86=92 =
+
+  a<SUB>i</SUB></TT>.  Regu=C5=82a jest faktem, je=C5=BCeli <TT>n</TT> =
 =3D 0. <BR> Niech=20
-  <TT>R</TT> b&#281;dzie zbiorem regu&#322;. Wyra&#380;enie <TT>a</TT> =
+  <TT>R</TT> b=C4=99dzie zbiorem regu=C5=82. Wyra=C5=BCenie <TT>a</TT> =
 jest prawdziwe w=20
-  <TT>R</TT>, je&#380;eli <BR><BR>(i) <TT>a</TT> jest faktem lub =
+  <TT>R</TT>, je=C5=BCeli <BR><BR>(i) <TT>a</TT> jest faktem lub =
 <BR><BR>(ii)=20
-  istnieje regu&#322;a =
-<TT>{a<SUB>i<SUB>1</SUB></SUB>,...a<SUB>i<SUB>n</SUB></SUB>} &#8594;=20
-  a<SUB>i</SUB></TT> w <TT>R</TT>, taka &#380;e <TT>a<SUB>i</SUB></TT> =
+  istnieje regu=C5=82a =
+<TT>{a<SUB>i<SUB>1</SUB></SUB>,...a<SUB>i<SUB>n</SUB></SUB>} =E2=86=92=20
+  a<SUB>i</SUB></TT> w <TT>R</TT>, taka =C5=BCe <TT>a<SUB>i</SUB></TT> =
 =3D <TT>a</TT>=20
   oraz <TT>a<SUB>i<SUB>1</SUB></SUB></TT>,... =
 <TT>a<SUB>i<SUB>n</SUB></SUB></TT>=20
-  s&#261; prawdziwe w <TT>R</TT>.<BR><BR>Prosz&#281; napisa&#263; =
-funkcj&#281; <TT>(valid a R)</TT>,=20
-  kt=F3ra sprawdza, czy wyra&#380;enie <TT>a</TT> jest prawdziwe w =
-<TT>R</TT>. Prosz&#281;=20
-  u&#380;y&#263; przy tym reprezentacje <TT>(fact a<SUB>i</SUB>)</TT> =
+  s=C4=85 prawdziwe w <TT>R</TT>.<BR><BR>Prosz=C4=99 napisa=C4=87 =
+funkcj=C4=99 <TT>(valid a R)</TT>,=20
+  kt=C3=B3ra sprawdza, czy wyra=C5=BCenie <TT>a</TT> jest prawdziwe w =
+<TT>R</TT>. Prosz=C4=99=20
+  u=C5=BCy=C4=87 przy tym reprezentacje <TT>(fact a<SUB>i</SUB>)</TT> =
 dla faktu oraz=20
   <TT>(rule (a<SUB>i<SUB>1</SUB></SUB> ... a<SUB>i<SUB>n</SUB></SUB>)=20
-  a<SUB>i</SUB>)</TT> <BR>dla regu&#322;y=20
-  <TT>{a<SUB>i<SUB>1</SUB></SUB>,...a<SUB>i<SUB>n</SUB></SUB>} &#8594;=20
+  a<SUB>i</SUB>)</TT> <BR>dla regu=C5=82y=20
+  <TT>{a<SUB>i<SUB>1</SUB></SUB>,...a<SUB>i<SUB>n</SUB></SUB>} =E2=86=92 =
+
   a<SUB>i</SUB></TT>. =20
-<PRE> Przyk&#322;ad:=0A=
+<PRE> Przyk=C5=82ad:=0A=
  =3D=3D&gt; (define R '((fact a<SUB>1</SUB>)=0A=
                  (rule (a<SUB>1</SUB>) a<SUB>2</SUB>)=0A=
                  (rule (a<SUB>1</SUB> a<SUB>5</SUB>) a<SUB>3</SUB>)=0A=
@@ -295,7 +299,111 @@ dla faktu oraz=20
  #t=0A=
  =3D=3D&gt; (valid 'a4 R)=0A=
  #f =0A=
-</PRE><!-- =0A=
+</PRE>
+  <LI> a) Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(make-konto =
+balance)</TT>, kt=C3=B3ra generuje=20
+  nowe konto z <TT>balance</TT> z=C5=82otymi. Na koncie maj=C4=85 =
+by=C4=87 mo=C5=BCliwie nast=C4=99puj=C4=85ce=20
+  operacje: Podj=C4=99cie, wp=C5=82acenie oraz =
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;informacje, ile=20
+  jest na koncie. <BR><BR>b) Prosz=C4=99 modifykowa=C4=87 funkcj=C4=99 =
+<TT>make-konto</TT> z=20
+  ci=C4=99ci a), taka =C5=BCe ona generuje konta z has=C5=82ami, tzn. =
+operacje zostaj=C4=85=20
+  wykonywane tylko, je=C5=BCeli u=C5=BCytkownik u=C5=BCywa prawdziwe =
+has=C5=82o.=20
+<PRE> Przyk=C5=82ad: =3D=3D&gt; (define konto (make-konto 100 =
+'has=C5=82o))=0A=
+           konto=0A=
+           =3D=3D&gt; ((konto 'has=C5=82o 'withdraw) 40)=0A=
+           60=0A=
+           =3D=3D&gt; ((konto 'inne-has=C5=82o 'withdraw) 20)=0A=
+           z=C5=82e has=C5=82o=0A=
+</PRE>
+  <LI>  Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(counting-version =
+f)</TT>, kt=C3=B3ra ma=20
+  jedonargumentow=C4=85 funkcj=C4=99 <TT>f</TT> jako argument. =
+Warto=C5=9B=C4=87 tej funkcji jest=20
+  now=C4=85 jednoargumentow=C4=85 funkcj=C4=99, kt=C3=B3ra liczy, ile =
+razy <BR>funkcja <TT>f</TT>=20
+  zosta=C5=82a u=C5=BCywana.=20
+<PRE> Przyk=C5=82ad: =3D=3D&gt; (define sq (counting-version square))=0A=
+           sq=0A=
+           =3D=3D&gt; (sq 5)=0A=
+           25=0A=
+           =3D=3D&gt; (sq 7)=0A=
+           49=0A=
+           =3D=3D&gt; (sq 'ile)=0A=
+           2=0A=
+           =3D=3D&gt; (sq 'reset)=0A=
+           0=0A=
+           =3D=3D&gt; (sq 'ile)=0A=
+           0=0A=
+</PRE>
+  <LI>  Prosz=C4=99 napisa=C4=87 destruktywn=C4=85 wersj=C4=99 =
+<TT>append!</TT> funkcji=20
+  <TT>append</TT>. Jakie s=C4=85 warto=C5=9Bci nast=C4=99puj=C4=85cych =
+wyra=C5=BCe=C5=84?=20
+<PRE>=3D=3D&gt; (define x '(a b)) <BR>=0A=
+=3D=3D&gt; (define y '(c d)) <BR>=0A=
+=3D=3D&gt; (append x y) <BR>=0A=
+=3D=3D&gt; (cdr x) <BR>=0A=
+=3D=3D&gt; (append! x y) <BR>=0A=
+=3D=3D&gt; (mcdr x) =0A=
+</PRE>
+  <LI> Co robi nast=C4=99puj=C4=85ca funkcja?=20
+<PRE> (define (co=C5=9B x)=0A=
+    (define (loop x y)=0A=
+       (if (null? x)=0A=
+           y=0A=
+           (let ((temp (mcdr x)))=0A=
+              (set-mcdr! x y)=0A=
+              (loop temp x))))=0A=
+    (loop x '()))=0A=
+</PRE>
+  Prosz=C4=99 narysowa=C4=87 diagramy dla wyra=C5=BCe=C5=84 <TT>(define =
+v '(a b c d))</TT> i=20
+  <TT>(define w (co=C5=9B v))</TT>i po ich wykonywaniu. <BR><BR>
+  <LI>  Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(count-boxes l)</TT>, =
+kt=C3=B3ra obliczy, ile jest=20
+  par w liscie <TT>l</TT>.=20
+<PRE> Przyk=C5=82ad:  =3D=3D&gt; (define x '(a b c))=0A=
+            x=0A=
+            =3D=3D&gt; (define z (cons x x))=0A=
+            z=0A=
+            =3D=3D&gt; (count-boxes x)=0A=
+            3=0A=
+            =3D=3D&gt; (count-boxes (append x x))=0A=
+            6=0A=
+            =3D=3D&gt; (count-boxes z)=0A=
+            4=0A=
+</PRE>
+  <LI> Na wyk=C5=82adzie zosta=C5=82 podyskutowany <A =
+href=3D"https://inf.ug.edu.pl/~schwarzw/zadania/simulator.scm">=20
+  simulator</A> uk=C5=82ad=C3=B3w logicznych. <BR><BR>a) Prosz=C4=99 =
+napisa=C4=87 funkcj=C4=99=20
+  <TT>(or-gate o1 o2 output)</TT>, kt=C3=B3ra generuje bramk=C4=99 =
+<TT>or</TT>. <BR><BR>b)=20
+   Prosz=C4=99 napisa=C4=87 funkcj=C4=99 <TT>(full-adder a b c-in sum =
+c-out)</TT>, kt=C3=B3ra=20
+  generuje (pe=C5=82ny) sumator. <BR><BR>c) Ripple-carry-adder, to =
+uk=C5=82ad, kt=C3=B3ry=20
+  sumuje dwie liczbe binarne <TT>a<SUB>n</SUB> ... a<SUB>1</SUB></TT> i=20
+  <TT>b<SUB>n</SUB> ... b<SUB>1</SUB></TT>. Wynik sumacji, to <TT>n</TT> =
+bit=C3=B3w=20
+  <TT>s<SUB>n</SUB> ... s<SUB>1</SUB></TT> oraz jeden bit <TT>c</TT> =
+(carry). =20
+  <BR>  &nbsp;&nbsp;&nbsp;&nbsp;Prosz=C4=99 napisa=C4=87 funkcj=C4=99 =
+<TT>(ripple-carry-adder A=20
+  B S c)</TT>, kt=C3=B3ra generuje takiego sumatora. Argumenty =
+<TT>A</TT>, <TT>B</TT>=20
+  i <TT>S</TT> s=C4=85 listami kabl=C3=B3w  <TT>a<SUB>i</SUB></TT>, =
+<TT>b<SUB>i</SUB></TT>=20
+  i <TT>s<SUB>i</SUB></TT>,  a <TT>c</TT> kablem carry. <BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;Prosz=C4=99 wygenerowa=C4=87 =
+ripple-carry-adder dla <TT>n</TT> =3D=20
+  4 bity i z nim obliczy=C4=87 1011 + 0011 oraz 1011 + 0110. =
+<BR><BR><!-- =0A=
 <li> a) Niech b&#x0119;d&#x0105; dane nast&#x0119;puj&#x0105;ce =
 definicje.=0A=
 <pre> (define litery '(a b c))=0A=
