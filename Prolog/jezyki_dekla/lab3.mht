@@ -1,0 +1,164 @@
+From: "Saved by Internet Explorer 11"
+Subject: Christoph Schwarzweller: Prolog
+Date: Fri, 18 Dec 2015 12:38:43 +0100
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://inf.ug.edu.pl/~schwarzw/zadania/ZadProlog2015-16.html
+X-MimeOLE: Produced By Microsoft MimeOLE V10.0.10011.16384
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><META content=3D"IE=3D5.0000" =
+http-equiv=3D"X-UA-Compatible">
+<TITLE>Christoph Schwarzweller: Prolog</TITLE>	=20
+<META http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dwindows-1252"><LINK=20
+href=3D"../cs.css" rel=3D"stylesheet" type=3D"text/css">=20
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.10586.35"></HEAD>=20
+<BODY class=3D"main"><BR>
+<H2> Zadania (Prolog) </H2>
+<OL>
+  <LI> D&#322;ugo&#347;&#263; listy  mo&#380;na w Prologu =
+zdefiniowa&#263; nast&#281;puj&#261;co.=20
+<PRE>  length(0, []).=0A=
+  length(N, [_|L]) :- length(M, L), N is M+1.=0A=
+</PRE>	=09
+  Prosz&#281; zdefiniowa&#263; predykaty <TT>fib/2</TT> oraz =
+<TT>nwd/3</TT>.  <BR><BR>
+  <LI> Niech b&#281;dzie dana baza danych zawieraj&#261;ca predykaty =
+<TT>parent/2</TT>,=20
+  <TT>female/1</TT>      i <TT>male/1</TT>. <BR>Prosz&#281; =
+zdefiniowa&#263; predykaty=20
+  <TT>child/2</TT>, <TT>mother/2</TT>, <TT>sister/2</TT>, =20
+  <TT>has_a_child/1</TT>, <TT>grandparent/2</TT>  oraz =
+<TT>predecessor/2</TT>.=20
+  <BR><BR>
+  <LI> Niech b&#281;d&#261; dane nast&#281;puj&#261;ce predykaty.				 =20
+<PRE> q<SUB>1</SUB>(X,Y) :- p(X,Y).                q<SUB>2</SUB>(X,Y) :- =
+p(X,Z), q<SUB>2</SUB>(Z,Y).=0A=
+ q<SUB>1</SUB>(X,Y) :- p(X,Z), q<SUB>1</SUB>(Z,Y).       =
+q<SUB>2</SUB>(X,Y) :- p(X,Y).  =0A=
+=0A=
+ q<SUB>3</SUB>(X,Y) :- p(X,Y).                q<SUB>4</SUB>(X,Y) :- =
+q<SUB>4</SUB>(X,Z), p(Z,Y).  =0A=
+ q<SUB>3</SUB>(X,Y) :- q<SUB>3</SUB>(X,Z), p(Z,Y).       =
+q<SUB>4</SUB>(X,Y) :- p(X,Y).  </PRE>
+  				 oraz baza danych dla predykat <TT>p</TT>:				=20
+<PRE> p(pam,bob).       =0A=
+ p(tom,bob).=0A=
+ p(tom,liz).=0A=
+ p(bob,ann).      =0A=
+ p(bob,pat).     =0A=
+ p(pat,jim). </PRE>
+  				 Przy u&#380;yciu "drzew odpowiedzi" prosz&#281; ilustrowa&#263;, =
+jak Prolog odpowiada na=20
+   pytania <TT>q<SUB>i</SUB>(tom,pat).</TT> oraz=20
+  <TT>q<SUB>i</SUB>(liz,jim)</TT>. <BR><BR>
+  <LI> Niech b&#281;dzie dany nast&#281;puj&#261;cy program. 				=20
+<PRE> f(1,one).=0A=
+ f(s(1),two).=0A=
+ f(s(s(1)),three).=0A=
+ f(s(s(s(X))),N) :- f(X,N). </PRE>
+  				Jak odpowiada Prolog na pytanie				  <BR>
+  <OL type=3D"a">
+    <LI><TT>f(s(1),A)</TT>?					 =20
+    <LI><TT>f(s(s(1)),two)</TT>?					 =20
+    <LI><TT>f(s(s(s(s(s(s(1)))))),C)</TT>?                               =
+     =20
+    <LI><TT>f(D,three)</TT>?                                    =20
+    <LI><TT>f(s(s(s(s(s(s(X)))))),E)</TT>?				  </LI></OL><BR>
+  <LI> Prosz&#281; zdefiniowa&#263; nast&#281;puj&#261;ce predykaty dla =
+list. <BR><BR>
+  <OL type=3D"a">
+    <LI><TT>delete(X,L1,L2)</TT>, kt=F3ry jest spe&#322;niony, =
+je&#380;eli <TT>L2</TT> r=F3wna=20
+    si&#281; <TT>L1</TT> bez elementu <TT>X</TT>.				=20
+    <LI><TT>delete(L1,L2)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+<TT>L2</TT> r=F3wna=20
+    si&#281; <TT>L1</TT> bez ostatnich trzech elemnet=F3w. 				=20
+    <LI><TT>p(X,L,Y,Z)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+<TT>Y</TT> jest=20
+    poprzednikiem elementu <TT>X</TT> w li&#347;cie <TT>L</TT> a =
+<TT>Z</TT> nast&#281;pc&#261;=20
+    elementu <TT>X</TT> w li&#347;cie <TT>L</TT>.				 <BR>Przyk&#322;ad: =
+   			      =20
+<PRE> ?- p(3, [1,2,3,4,5], Y, Z).=0A=
+ Y =3D 2, Z =3D 4 </PRE>
+    <LI><TT>q(X,L1,L2)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+<TT>L2</TT> r=F3wna si&#281;=20
+    pocz&#261;tku listy <TT>L1</TT> do podw=F3jnego wyst&#261;pienia =
+elementu <TT>X</TT>.
+    				 <BR>Przyk&#322;ad:                                  =20
+<PRE> ?- q(3, [1,2,3,3,1,2,4], Z).=0A=
+ Z =3D [1,2,3,3] </PRE>
+    <LI><TT>evenlength(L)</TT> oraz <TT>oddlength(L)</TT>, kt=F3re =
+s&#261;  spe&#322;nione,=20
+    je&#380;eli d&#322;ugo&#347;&#263; listy <TT>L</TT> jest parzysta =
+oraz nieparzysta. <BR>
+    <LI><TT>shift(L1,L2)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+<TT>L2</TT> r=F3wna=20
+    si&#281; <TT>L1</TT> po jednej rotacji do lewej.			         =
+<BR>Przyk&#322;ad:        =20
+                             =20
+<PRE> ?- shift([1,2,3,4,5], L).=0A=
+ L =3D [2,3,4,5,1] </PRE>
+    <LI><TT>palindrom(L)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+lista <TT>L</TT>=20
+    zawiera palindrom.			         <BR>Przyk&#322;ady:                    =
+            =20
+     =20
+<PRE> ?- palindrom([a,b,c]).=0A=
+ no=0A=
+ ?- palindrom([a,b,c,d,c,b,a]).=0A=
+ yes </PRE></LI></OL>
+  <LI> Prosz&#281; zdefiniowa&#263; nast&#281;puj&#261;ce predykaty dla =
+list. <BR><BR>
+  <OL type=3D"a">
+    <LI><TT>flatten(L1,L2)</TT>, kt=F3ry jest spe&#322;niony, =
+je&#380;eli lista <TT>L2</TT>=20
+    jest wersj&#261; p&#322;ask&#261; listy <TT>L1</TT>.=20
+    <LI><TT>ordered(L)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+lista <TT>L</TT> jest=20
+    posortowana.=20
+    <LI><TT>mergesort(L1,L2)</TT>, kt=F3ry jest spe&#322;niony, =
+je&#380;eli lista=20
+    <TT>L2</TT> jest wersj&#261; posortowan&#261; listy <TT>L1</TT>.     =
+Predykat ma=20
+    simulowac algorytm quicksort. <BR><BR></LI></OL>
+  <LI> Niech b&#281;d&#261; dane nast&#281;puj&#261;ca defincja =
+predykatu <TT>append</TT>.    =20
+<PRE>  append([X|L1], L2, [X|L3]) :- append(L1, L2, L3).=0A=
+  append([], L, L).   </PRE>=09
+  Przy u&#380;yciu drzewa wykonywania prosz&#281; ilustrowa&#263;, jak =
+Prolog odpowiada na=20
+  pytanie =20
+<PRE> ?- append(X, [3,4], [2,3,4]).=0A=
+</PRE>
+  <LI> Prosz&#281; zdefiniowa&#263; predykat <TT>permutation(L,P)</TT>, =
+kt=F3ry jest=20
+  spe&#322;niony, je&#380;eli lista <TT>P </TT> jest permutacj&#261;     =
+  listy <TT>L</TT>.
+  	 <BR>	Przy u&#380;yciu "<TT>;</TT>" powiennien by&#263; mo&#380;liwe =
+wylicza&#263; wszystkie=20
+  permutacje listy <TT>L</TT>.	 <BR><BR>
+  <LI> Prosz&#281; zdefiniowa&#263; nast&#281;puj&#261;ce predykaty =
+<BR><BR>
+  <OL type=3D"a">
+    <LI><TT>nth(N,L,X)</TT>, kr=F3ry jest spe&#322;niony, je&#380;eli =
+<TT>X</TT> jest=20
+    <TT>N</TT>-tym elementem listy <TT>L</TT>. <BR>
+    <LI><TT>sorted(L)</TT>, kt=F3ry jest spe&#322;niony, je&#380;eli =
+lista <TT>L</TT> jest=20
+    posortowana. <BR>
+    <LI> zrealizuj&#261;cy algorytm <TT>mergesort</TT>.<BR>      Jak =
+mo&#380;na=20
+    zdefiniowa&#263; predykat <TT>permutation</TT> z zadania 10. =
+u&#380;ywaj&#261;c=20
+    <TT>mergesort</TT>? <BR><BR></LI></OL>
+  <LI> Prosz&#281; zdefiniowa&#263; predykat <TT>number(Z)</TT>, kt=F3ry =
+znajduje wszystkie=20
+  trzy-cyfrowe liczby,      kt=F3re mo&#380;na podzieli&#263; prez 5 i 6 =
+oraz maj&#261; reszt&#281; 3,=20
+  je&#380;eli zostaj&#261; podzielone przez 9.       =
+<BR><BR></LI></OL></BODY></HTML>

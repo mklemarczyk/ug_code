@@ -1,0 +1,1 @@
+% Od 6 ( drzewa)

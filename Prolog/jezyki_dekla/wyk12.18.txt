@@ -1,0 +1,44 @@
+#definicja drzewa binarnego
+leaf(i).
+drzewo(i,j,p).
+
+#wysokosc
+height(nil, 0).
+#obliczanie warunkowe
+height(drzewo(X,L,R),M) :-
+	height(L,M1),
+	height(R,M2),
+	M1>=M2,
+	M is M1+1.
+height(drzewo(X,L,R),M) :-
+	height(L,M1),
+	height(R,M2),
+	M2>=M1,
+	M is M2+1.
+#lub przez predykat max
+height(drzewo(X,L,R),M) :-
+	height(L,M1),
+	height(R,M2),
+	max(M1,M2,M),
+	M is M1+1.
+
+#suma elementow
+sum(nil, 0).
+sum(drzewo(X,L,R), M) :-
+	sum(L, M1),
+	sum(R, M2),
+	M is M1 + M2 + X.
+
+#clone - klonowanie drzewa
+clone(nil, nil).
+clone(drzewo(X,XL,XR), drzewo(Y,YL,YR)) :-
+	Y is X,
+	sq(XL,YL),
+	sq(XR,YR).
+
+#sq - potegowanie elementow drzewa (each x = x^2)
+sq(nil, nil).
+sq(drzewo(X,XL,XR), drzewo(Y,YL,YR)) :-
+	Y is X * X,
+	sq(XL,YL),
+	sq(XR,YR).
