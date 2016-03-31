@@ -10,6 +10,8 @@ if [[ "$1" ]]; then
 	fi
 else
 	trap "rm -f $server" EXIT
+	trap "" SIGTERM
+	trap "" SIGHUP
 
 	if [[ ! -p $server ]]; then
 		mkfifo $server
