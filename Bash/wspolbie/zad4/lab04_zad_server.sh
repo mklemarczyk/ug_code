@@ -20,7 +20,7 @@ else
 	while true
 	do
 		if read line < $server; then
-			$0 $line
+			$0 $line &
 		fi
 	done
 fi
