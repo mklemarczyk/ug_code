@@ -20,12 +20,14 @@ int main(){
 	scanf("%3d", &a);
 	msg1.id = a;
 	msg1.size = strlen(home);
-	if(write(fd, &msg1, sizeof(msg1)) == -1){
-		printf("Blad nadania dlugosci\n");
-		exit(0);
-	}
-	if(write(fd, home, msg1.size) == -1){
-		printf("Blad nadania powrotu\n");
+	
+	int bufferLength = msg1.size + sizeof(msg1);
+	char* buffer = (char*) malloc(bufferLength);
+	memcpy(buffer, &msg1, sizeof(msg1));
+	memcpy(buffer + sizeof(msg1), home, msg1.size);
+	
+	if(write(fd, buffer, bufferLength) == -1){
+		printf("Blad nadania\n");
 		exit(0);
 	}
 	close(fd);
