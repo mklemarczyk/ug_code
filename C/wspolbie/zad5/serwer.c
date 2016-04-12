@@ -53,7 +53,7 @@ main(){
 
 	unlink("serwerfifo");
 	mkfifo("serwerfifo", 0777);
-	
+
 	while((fd1 = open("serwerfifo", O_RDONLY, 0)) != -1){
 		if(read(fd1, &msg1, sizeof(msg1)) == -1){
 			printf("Blad odczytu wiadomosci\n");
@@ -76,12 +76,14 @@ main(){
 		if((fd2 = open("klientfifo", O_WRONLY, 0)) != -1){
 			if(found > -1){
 				msg2.size = dane[found].size;
-				if(write(fd2, &msg2, 4) == -1){
-					printf("Blad wyslania dlugosci\n");
-					exit(0);
-				}
-				if(write(fd2, dane[found].msg, msg2.size) == -1){
-					printf("Blad wyslania wiadomosci\n");
+				
+				int bufferLength = msg2.size + sizeof(msg2);
+				char* buffer = (char*) malloc(bufferLength);
+				memcpy(buffer, &msg2, sizeof(msg2));
+				memcpy(buffer + sizeof(msg2), dane[found].msg, msg2.size);
+				
+				if(write(fd2, buffer, bufferLength) == -1){
+					printf("Blad wyslania\n");
 					exit(0);
 				}
 			}else{
@@ -101,6 +103,7 @@ main(){
 			printf("Blad otwarcia powrotu\n");
 			exit(0);
 		}
+		
 		close(fd1);
 	}
 
