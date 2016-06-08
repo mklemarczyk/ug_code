@@ -1,11 +1,13 @@
 #include "game.h"
 
+#define LOOP_INTERVAL 15*1000
+
 Display *mydisplay;
 Window mywindow;
 GC mygc;
 XColor mycolorm, mycolorm1, dummy;
 
-pthread_t tid, tid1;
+pthread_t tid1, tid2, tid3;
 int p;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
@@ -24,21 +26,50 @@ void intHandler(int dummy) {
 	end();
 }
 
+void *uploadPosition(void *argum){
+	int xr,yr;
+	int* isCancel = (int*)argum;
+  
+	while(*isCancel == 0){  
+        xr = *(sharedPosition +0);
+        yr = *(sharedPosition +1);
+        *(sharedPosition +4) = xr;
+        *(sharedPosition +5) = yr;
+		usleep(LOOP_INTERVAL);
+	}
+	printf("End upload\n");
+}
+
+void *downloadPosition(void *argum){
+	int xr,yr;
+	int* isCancel = (int*)argum;
+  
+	while(*isCancel == 0){  
+        xr = *(sharedPosition +4);
+        yr = *(sharedPosition +5);
+        *(sharedPosition +2) = xr;
+        *(sharedPosition +3) = yr;
+		usleep(LOOP_INTERVAL);
+	}
+	printf("End download\n");
+}
+
 void *draw(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
   
 	while(*isCancel == 0){  
         pthread_mutex_lock(&lock);
-        xr = *(sharedPosition+0);
-        yr = *(sharedPosition+1);
+        xr = *(sharedPosition +2);
+        yr = *(sharedPosition +3);
         XClearArea(mydisplay, mywindow, 0, 0, 500, 500, 0);
 		XSetForeground(mydisplay, mygc, mycolorm.pixel);
 		XFillArc(mydisplay, mywindow, mygc, xr-(40/2), yr-(40/2), 40, 40, 0, 360*64);
 		XFlush(mydisplay);
 		pthread_mutex_unlock(&lock);
-		usleep(15 * 1000);
+		usleep(LOOP_INTERVAL);
 	}
+	printf("End draw\n");
 }
 
 void main(){
@@ -80,12 +111,17 @@ void main(){
 
 	mygc = DefaultGC(mydisplay, myscreen);
 
-	pamiec = shmget(klucz, sizeof(int) *2, 0777 | IPC_CREAT);
+	pamiec = shmget(klucz, sizeof(int) *6, 0777 | IPC_CREAT);
 	sharedPosition = shmat(pamiec, 0, 0);
 
 	int cancelDraw = 0;
-	int* cancelArg = &cancelDraw;
-	pthread_create(&tid1, NULL, draw, cancelArg);
+	pthread_create(&tid1, NULL, draw, &cancelDraw);
+
+	int cancelUp = 0;
+	pthread_create(&tid2, NULL, uploadPosition, &cancelUp);
+
+	int cancelDown = 0;
+	pthread_create(&tid3, NULL, downloadPosition, &cancelDown);
 
 	XEvent myevent;
 	int xw, yw;
@@ -108,6 +144,8 @@ void main(){
 				// Only Esc close window
 				if(myevent.xkey.keycode == 9){
 					cancelDraw = 1;
+					cancelUp = 1;
+					cancelDown = 1;
 					XCloseDisplay(mydisplay);
 					end();
 					exit(0);
