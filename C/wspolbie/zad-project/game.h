@@ -18,28 +18,28 @@
 #include <X11/Xlib.h>
 
 // Find game server
-findserver();
+void findserver();
 
 // Init as game server
-createserver();
+void createserver();
 
-// DONE - Recieve request from client
-recieverequest();
+// Recieve request from client
+void recieverequest();
 
 // Send interval update to all clients
-sendupdate();
+void sendupdate();
 
-// DONE - Interval client draw
-draw();
+// Interval client draw
+void *draw();
 
 // Mouse handler
-mousehandle();
+void mousehandle();
 
-// DONE - Send update request to server
-sendrequest();
+// Send update request to server
+void sendrequest();
 
 // Recieve update position from server
-recieveupdate();
+void recieveupdate();
 
 // Init program
-main();
+void main();
