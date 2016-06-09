@@ -17,7 +17,11 @@
 #include <X11/X.h>
 #include <X11/Xlib.h>
 
+#include <errno.h>
+
 #define LOOP_INTERVAL 15*1000
+#define UNIT1_PORT 5535
+#define COMM1_PORT 5536
 
 Display *mydisplay;
 Window mywindow;

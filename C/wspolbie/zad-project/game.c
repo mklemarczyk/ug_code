@@ -11,11 +11,15 @@ int* sharedPosition;
 int pamiec;
 
 int ip4addrSize;
-int s;
-struct sockaddr_in ip4addr;
+int s1;
+struct sockaddr_in ip4addr1;
+int s2;
+struct sockaddr_in ip4addr2;
 
 void end(){
 	printf("Usuwanie powiazan\n");
+	close(s1);
+	close(s2);
 	shmdt(sharedPosition);
 	shmctl(pamiec, IPC_RMID, 0);
 	pthread_mutex_destroy(&lock);
@@ -28,13 +32,18 @@ void intHandler(int dummy) {
 void *handleSetNewPosition(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
-  
-	while(*isCancel == 0){  
-        xr = *(sharedPosition +0);
-        yr = *(sharedPosition +1);
+
+	int arr[2];
+	int* buff = arr;
+
+	while(*isCancel == 0){
+		recvfrom(s1, (char *)buff, sizeof(buff) *2, 0, (struct sockaddr*) &ip4addr1, &ip4addrSize);
+		xr = *(buff+0);
+		yr = *(buff+1);
+		xr = ntohl(xr);
+		yr = ntohl(yr);
         *(sharedPosition +4) = xr;
         *(sharedPosition +5) = yr;
-		usleep(LOOP_INTERVAL);
 	}
 	printf("End upload\n");
 }
@@ -56,12 +65,18 @@ void *handleGetNewPosition(void *argum){
 void *setNewPosition(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
-  
+
+	int arr[2];
+	int* buff = arr;
+
 	while(*isCancel == 0){  
         xr = *(sharedPosition +0);
         yr = *(sharedPosition +1);
-        *(sharedPosition +4) = xr;
-        *(sharedPosition +5) = yr;
+		xr = htonl(xr);
+		yr = htonl(yr);
+		*(buff+0) = xr;
+		*(buff+1) = yr;
+		sendto(s1, (char *)buff, sizeof(buff) *2, 0, (struct sockaddr*) &ip4addr1, ip4addrSize);
 		usleep(LOOP_INTERVAL);
 	}
 	printf("End upload\n");
@@ -177,41 +192,61 @@ void main(){
 	signal(SIGINT, intHandler);
 	p = getpid();
 
-	pamiec = shmget(klucz, sizeof(int) *6, 0777 | IPC_CREAT);
-	sharedPosition = shmat(pamiec, 0, 0);
-
-int ip4addrSize;
 ip4addrSize = sizeof(struct sockaddr_in);
 
-int s;
-s = socket(PF_INET, SOCK_DGRAM, 0x0);
+s1 = socket(PF_INET, SOCK_DGRAM, 0x0);
+s2 = socket(PF_INET, SOCK_DGRAM, 0x0);
 
-struct sockaddr_in ip4addr_any;
-bzero((char *) &ip4addr_any, sizeof(ip4addr_any));
-ip4addr_any.sin_family = AF_INET;
-ip4addr_any.sin_port = htons((ushort) 5535);
-ip4addr_any.sin_addr.s_addr = htonl(INADDR_ANY);
+struct sockaddr_in ip4addr_any1;
+bzero((char *) &ip4addr_any1, sizeof(ip4addr_any1));
+ip4addr_any1.sin_family = AF_INET;
+ip4addr_any1.sin_port = htons((ushort) UNIT1_PORT);
+ip4addr_any1.sin_addr.s_addr = htonl(INADDR_ANY);
 
-struct sockaddr_in ip4addr_my;
-bzero((char *) &ip4addr_my, sizeof(ip4addr_my));
-ip4addr_my.sin_family = AF_INET;
-ip4addr_my.sin_port = htons((ushort) 5535);
-inet_pton(AF_INET, "192.168.1.181", &ip4addr_my.sin_addr);
+struct sockaddr_in ip4addr_any2;
+bzero((char *) &ip4addr_any2, sizeof(ip4addr_any2));
+ip4addr_any2.sin_family = AF_INET;
+ip4addr_any2.sin_port = htons((ushort) COMM1_PORT);
+ip4addr_any2.sin_addr.s_addr = htonl(INADDR_ANY);
 
-if(bind(s, (struct sockaddr*) &ip4addr_any, ip4addrSize) >=0){
+struct sockaddr_in ip4addr_my1;
+bzero((char *) &ip4addr_my1, sizeof(ip4addr_my1));
+ip4addr_my1.sin_family = AF_INET;
+ip4addr_my1.sin_port = htons((ushort) UNIT1_PORT);
+inet_pton(AF_INET, "153.19.7.230", &ip4addr_my1.sin_addr);
+
+struct sockaddr_in ip4addr_my2;
+bzero((char *) &ip4addr_my2, sizeof(ip4addr_my2));
+ip4addr_my2.sin_family = AF_INET;
+ip4addr_my2.sin_port = htons((ushort) COMM1_PORT);
+inet_pton(AF_INET, "153.19.7.230", &ip4addr_my2.sin_addr);
+
+int error = 0;
+
+if((error = bind(s1, (struct sockaddr*) &ip4addr_any1, ip4addrSize)) >=0){
+	bind(s2, (struct sockaddr*) &ip4addr_any2, ip4addrSize);
 	// I'm a server
-	ip4addr = ip4addr_any;
+	ip4addr1 = ip4addr_any1;
+	ip4addr2 = ip4addr_any2;
 	printf("I'm a server\n");
+	pamiec = shmget(klucz, sizeof(int) *6, 0777 | IPC_CREAT);
+	sharedPosition = shmat(pamiec, 0, 0);
 	pthread_create(&tid2, NULL, handleSetNewPosition, &cancelUp);
 	pthread_create(&tid3, NULL, handleGetNewPosition, &cancelDown);
 }else{
+	printf("Error: %d, %d", error, errno);
 	// I'm a client
-	ip4addr = ip4addr_my;
-	bind(s, (struct sockaddr*) &ip4addr_my, ip4addrSize);
+	ip4addr1 = ip4addr_my1;
+	ip4addr2 = ip4addr_my2;
+	bind(s1, (struct sockaddr*) &ip4addr_my1, ip4addrSize);
+	bind(s2, (struct sockaddr*) &ip4addr_my2, ip4addrSize);
 	printf("I'm a client\n");
 	klucz++;
+	pamiec = shmget(klucz, sizeof(int) *6, 0777 | IPC_CREAT);
+	sharedPosition = shmat(pamiec, 0, 0);
 	pthread_create(&tid2, NULL, setNewPosition, &cancelUp);
 	pthread_create(&tid3, NULL, getNewPosition, &cancelDown);
+	printf("Error: %d, %d", error, errno);
 }
 
 	mousehandle();
