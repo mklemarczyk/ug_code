@@ -51,13 +51,19 @@ void *handleSetNewPosition(void *argum){
 void *handleGetNewPosition(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
-  
-	while(*isCancel == 0){  
+
+	int arr[2];
+	int* buff = arr;
+
+	while(*isCancel == 0){
+		recvfrom(s2, (char *)buff, sizeof(buff) *2, 0, (struct sockaddr*) &ip4addr2, &ip4addrSize);
         xr = *(sharedPosition +4);
         yr = *(sharedPosition +5);
-        *(sharedPosition +2) = xr;
-        *(sharedPosition +3) = yr;
-		usleep(LOOP_INTERVAL);
+		xr = htonl(xr);
+		yr = htonl(yr);
+		*(buff+0) = xr;
+		*(buff+1) = yr;
+		sendto(s2, (char *)buff, sizeof(buff) *2, 0, (struct sockaddr*) &ip4addr2, ip4addrSize);
 	}
 	printf("End download\n");
 }
@@ -85,10 +91,17 @@ void *setNewPosition(void *argum){
 void *getNewPosition(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
-  
-	while(*isCancel == 0){  
-        xr = *(sharedPosition +4);
-        yr = *(sharedPosition +5);
+
+	int arr[2];
+	int* buff = arr;
+
+	while(*isCancel == 0){
+		sendto(s2, (char *)buff, sizeof(buff) *2, 0, (struct sockaddr*) &ip4addr2, ip4addrSize);
+		recvfrom(s2, (char *)buff, sizeof(buff) *2, 0, (struct sockaddr*) &ip4addr2, &ip4addrSize);
+		xr = *(buff+0);
+		yr = *(buff+1);
+		xr = ntohl(xr);
+		yr = ntohl(yr);
         *(sharedPosition +2) = xr;
         *(sharedPosition +3) = yr;
 		usleep(LOOP_INTERVAL);
