@@ -1,10 +1,5 @@
 #include "game.h"
 
-#define LOOP_INTERVAL 15*1000
-
-Display *mydisplay;
-Window mywindow;
-GC mygc;
 XColor mycolorm, mycolorm1, dummy;
 
 pthread_t tid1, tid2, tid3;
@@ -14,6 +9,11 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 int klucz = 5535;
 int* sharedPosition;
 int pamiec;
+
+int ip4addrSize;
+int s;
+struct sockaddr_in ip4addr;
+
 
 void end(){
 	printf("Usuwanie powiazan\n");
@@ -75,6 +75,39 @@ void *draw(void *argum){
 void main(){
 	signal(SIGINT, intHandler);
 	p = getpid();
+
+
+int ip4addrSize;
+ip4addrSize = sizeof(struct sockaddr_in);
+
+int s;
+s = socket(PF_INET, SOCK_DGRAM, 0x0);
+
+struct sockaddr_in ip4addr_any;
+bzero((char *) &ip4addr_any, sizeof(ip4addr_any));
+ip4addr_any.sin_family = AF_INET;
+ip4addr_any.sin_port = htons((ushort) 5535);
+ip4addr_any.sin_addr.s_addr = htonl(INADDR_ANY);
+
+struct sockaddr_in ip4addr_my;
+bzero((char *) &ip4addr_my, sizeof(ip4addr_my));
+ip4addr_my.sin_family = AF_INET;
+ip4addr_my.sin_port = htons((ushort) 5535);
+inet_pton(AF_INET, "192.168.1.181", &ip4addr_my.sin_addr);
+
+if(bind(s, (struct sockaddr*) &ip4addr_any, ip4addrSize) >=0){
+	// I'm a server
+	ip4addr = ip4addr_any;
+	printf("I'm a server\n");
+	
+}else{
+	// I'm a client
+	ip4addr = ip4addr_my;
+	bind(s, (struct sockaddr*) &ip4addr_my, ip4addrSize);
+	printf("I'm a client\n");
+	klucz++;
+}
+
 
 	XInitThreads();
 	mydisplay = XOpenDisplay("");

@@ -17,6 +17,12 @@
 #include <X11/X.h>
 #include <X11/Xlib.h>
 
+#define LOOP_INTERVAL 15*1000
+
+Display *mydisplay;
+Window mywindow;
+GC mygc;
+
 // Find game server
 void findserver();
 
