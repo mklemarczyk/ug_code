@@ -14,7 +14,6 @@ int ip4addrSize;
 int s;
 struct sockaddr_in ip4addr;
 
-
 void end(){
 	printf("Usuwanie powiazan\n");
 	shmdt(sharedPosition);
@@ -26,7 +25,7 @@ void intHandler(int dummy) {
 	end();
 }
 
-void *uploadPosition(void *argum){
+void *handleSetNewPosition(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
   
@@ -40,7 +39,35 @@ void *uploadPosition(void *argum){
 	printf("End upload\n");
 }
 
-void *downloadPosition(void *argum){
+void *handleGetNewPosition(void *argum){
+	int xr,yr;
+	int* isCancel = (int*)argum;
+  
+	while(*isCancel == 0){  
+        xr = *(sharedPosition +4);
+        yr = *(sharedPosition +5);
+        *(sharedPosition +2) = xr;
+        *(sharedPosition +3) = yr;
+		usleep(LOOP_INTERVAL);
+	}
+	printf("End download\n");
+}
+
+void *setNewPosition(void *argum){
+	int xr,yr;
+	int* isCancel = (int*)argum;
+  
+	while(*isCancel == 0){  
+        xr = *(sharedPosition +0);
+        yr = *(sharedPosition +1);
+        *(sharedPosition +4) = xr;
+        *(sharedPosition +5) = yr;
+		usleep(LOOP_INTERVAL);
+	}
+	printf("End upload\n");
+}
+
+void *getNewPosition(void *argum){
 	int xr,yr;
 	int* isCancel = (int*)argum;
   
@@ -72,43 +99,11 @@ void *draw(void *argum){
 	printf("End draw\n");
 }
 
-void main(){
-	signal(SIGINT, intHandler);
-	p = getpid();
+int cancelDraw = 0;
+int cancelUp = 0;
+int cancelDown = 0;
 
-
-int ip4addrSize;
-ip4addrSize = sizeof(struct sockaddr_in);
-
-int s;
-s = socket(PF_INET, SOCK_DGRAM, 0x0);
-
-struct sockaddr_in ip4addr_any;
-bzero((char *) &ip4addr_any, sizeof(ip4addr_any));
-ip4addr_any.sin_family = AF_INET;
-ip4addr_any.sin_port = htons((ushort) 5535);
-ip4addr_any.sin_addr.s_addr = htonl(INADDR_ANY);
-
-struct sockaddr_in ip4addr_my;
-bzero((char *) &ip4addr_my, sizeof(ip4addr_my));
-ip4addr_my.sin_family = AF_INET;
-ip4addr_my.sin_port = htons((ushort) 5535);
-inet_pton(AF_INET, "192.168.1.181", &ip4addr_my.sin_addr);
-
-if(bind(s, (struct sockaddr*) &ip4addr_any, ip4addrSize) >=0){
-	// I'm a server
-	ip4addr = ip4addr_any;
-	printf("I'm a server\n");
-	
-}else{
-	// I'm a client
-	ip4addr = ip4addr_my;
-	bind(s, (struct sockaddr*) &ip4addr_my, ip4addrSize);
-	printf("I'm a client\n");
-	klucz++;
-}
-
-
+void mousehandle(){
 	XInitThreads();
 	mydisplay = XOpenDisplay("");
 
@@ -144,17 +139,7 @@ if(bind(s, (struct sockaddr*) &ip4addr_any, ip4addrSize) >=0){
 
 	mygc = DefaultGC(mydisplay, myscreen);
 
-	pamiec = shmget(klucz, sizeof(int) *6, 0777 | IPC_CREAT);
-	sharedPosition = shmat(pamiec, 0, 0);
-
-	int cancelDraw = 0;
 	pthread_create(&tid1, NULL, draw, &cancelDraw);
-
-	int cancelUp = 0;
-	pthread_create(&tid2, NULL, uploadPosition, &cancelUp);
-
-	int cancelDown = 0;
-	pthread_create(&tid3, NULL, downloadPosition, &cancelDown);
 
 	XEvent myevent;
 	int xw, yw;
@@ -186,4 +171,48 @@ if(bind(s, (struct sockaddr*) &ip4addr_any, ip4addrSize) >=0){
 				break;
 		}
 	}
+}
+
+void main(){
+	signal(SIGINT, intHandler);
+	p = getpid();
+
+	pamiec = shmget(klucz, sizeof(int) *6, 0777 | IPC_CREAT);
+	sharedPosition = shmat(pamiec, 0, 0);
+
+int ip4addrSize;
+ip4addrSize = sizeof(struct sockaddr_in);
+
+int s;
+s = socket(PF_INET, SOCK_DGRAM, 0x0);
+
+struct sockaddr_in ip4addr_any;
+bzero((char *) &ip4addr_any, sizeof(ip4addr_any));
+ip4addr_any.sin_family = AF_INET;
+ip4addr_any.sin_port = htons((ushort) 5535);
+ip4addr_any.sin_addr.s_addr = htonl(INADDR_ANY);
+
+struct sockaddr_in ip4addr_my;
+bzero((char *) &ip4addr_my, sizeof(ip4addr_my));
+ip4addr_my.sin_family = AF_INET;
+ip4addr_my.sin_port = htons((ushort) 5535);
+inet_pton(AF_INET, "192.168.1.181", &ip4addr_my.sin_addr);
+
+if(bind(s, (struct sockaddr*) &ip4addr_any, ip4addrSize) >=0){
+	// I'm a server
+	ip4addr = ip4addr_any;
+	printf("I'm a server\n");
+	pthread_create(&tid2, NULL, handleSetNewPosition, &cancelUp);
+	pthread_create(&tid3, NULL, handleGetNewPosition, &cancelDown);
+}else{
+	// I'm a client
+	ip4addr = ip4addr_my;
+	bind(s, (struct sockaddr*) &ip4addr_my, ip4addrSize);
+	printf("I'm a client\n");
+	klucz++;
+	pthread_create(&tid2, NULL, setNewPosition, &cancelUp);
+	pthread_create(&tid3, NULL, getNewPosition, &cancelDown);
+}
+
+	mousehandle();
 }

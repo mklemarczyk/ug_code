@@ -29,11 +29,11 @@ void findserver();
 // Init as game server
 void createserver();
 
-// Recieve request from client
-void recieverequest();
+// Handle update with new position from client
+void *handleSetNewPosition();
 
-// Send interval update to all clients
-void sendupdate();
+// Handle update request for new position from client
+void *handleGetNewPosition();
 
 // Interval client draw
 void *draw();
@@ -41,11 +41,11 @@ void *draw();
 // Mouse handler
 void mousehandle();
 
-// Send update request to server
-void sendrequest();
+// Send update with new position to the server
+void *setNewPosition();
 
-// Recieve update position from server
-void recieveupdate();
+// Send update request for new position to the server
+void *getNewPosition();
 
 // Init program
 void main();
