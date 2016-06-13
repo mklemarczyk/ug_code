@@ -2,7 +2,7 @@
 
 XColor mycolorm, mycolorm1, dummy;
 
-pthread_t tid1, tid2, tid3, tid4;
+pthread_t tid1, tid2, tid3, tid4, tid5;
 int p;
 pthread_mutex_t lock1 = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t lock2 = PTHREAD_MUTEX_INITIALIZER;
@@ -35,6 +35,35 @@ void end(){
 
 void intHandler(int dummy) {
 	end();
+}
+
+void *handleMySetNewPosition(void *argum){
+	int xr, yr, cxr, cyr;
+	double xv, yv;
+	int* isCancel = (int*)argum;
+
+	int oldX, oldY;
+
+	while(*isCancel == 0){
+		pthread_mutex_lock(&lock3);
+		xr = *(sharedPosition +0);
+		yr = *(sharedPosition +1);
+		pthread_mutex_unlock(&lock3);
+		if(xr != oldX && yr != oldY){
+			pthread_mutex_lock(&lock2);
+			cxr = *(sharedPosition +2);
+			cyr = *(sharedPosition +3);
+			xv = xr - cxr;
+			yv = yr - cyr;
+			*(sharedVector +0) = xv;
+			*(sharedVector +1) = yv;
+			pthread_mutex_unlock(&lock2);
+		}
+		oldX = xr;
+		oldY = yr;
+		usleep(LOOP_INTERVAL);
+	}
+	printf("End my upload\n");
 }
 
 void *handleSetNewPosition(void *argum){
@@ -176,6 +205,7 @@ int cancelDraw = 0;
 int cancelUp = 0;
 int cancelDown = 0;
 int cancelComput = 0;
+int cancelMyUpdate = 0;
 
 void mousehandle(){
 	XInitThreads();
@@ -243,6 +273,7 @@ void mousehandle(){
 					cancelUp = 1;
 					cancelDown = 1;
 					cancelComput = 1;
+					cancelMyUpdate = 1;
 					XCloseDisplay(mydisplay);
 					end();
 					exit(0);
@@ -300,6 +331,7 @@ if((error = bind(s1, (struct sockaddr*) &ip4addr_any1, ip4addrSize)) >=0){
 	pthread_create(&tid2, NULL, handleSetNewPosition, &cancelUp);
 	pthread_create(&tid3, NULL, handleGetNewPosition, &cancelDown);
 	pthread_create(&tid4, NULL, computePosition, &cancelComput);
+	pthread_create(&tid5, NULL, handleMySetNewPosition, &cancelMyUpdate);
 }else{
 	printf("Error: %d, %d", error, errno);
 	// I'm a client
