@@ -22,7 +22,8 @@
 #define LOOP_INTERVAL 15*1000
 #define UNIT1_PORT 5535
 #define COMM1_PORT 5536
-#define SERVE_ADDR "153.19.7.230"
+//#define SERVE_ADDR "153.19.7.230"
+//#define SERVE_ADDR "192.168.1.72"
 
 Display *mydisplay;
 Window mywindow;

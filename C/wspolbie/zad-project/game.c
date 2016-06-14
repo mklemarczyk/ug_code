@@ -294,7 +294,7 @@ void mousehandle(){
 	}
 }
 
-void main(){
+void main(int argc, char *argv[]){
 	signal(SIGINT, intHandler);
 	p = getpid();
 
@@ -323,17 +323,18 @@ void main(){
 	bzero((char *) &ip4addr_my1, sizeof(ip4addr_my1));
 	ip4addr_my1.sin_family = AF_INET;
 	ip4addr_my1.sin_port = htons((ushort) UNIT1_PORT);
-	inet_pton(AF_INET, SERVE_ADDR, &ip4addr_my1.sin_addr);
+	inet_pton(AF_INET, argv[1], &ip4addr_my1.sin_addr); //SERVE_ADDR
 
 	struct sockaddr_in ip4addr_my2;
 	bzero((char *) &ip4addr_my2, sizeof(ip4addr_my2));
 	ip4addr_my2.sin_family = AF_INET;
 	ip4addr_my2.sin_port = htons((ushort) COMM1_PORT);
-	inet_pton(AF_INET, SERVE_ADDR, &ip4addr_my2.sin_addr);
+	inet_pton(AF_INET, argv[1], &ip4addr_my2.sin_addr); //SERVE_ADDR
 
 	int error = 0;
 
-	if((error = bind(s1, (struct sockaddr*) &ip4addr_any1, ip4addrSize)) >=0){
+	if(argc > 2/* || (error = bind(s1, (struct sockaddr*) &ip4addr_any1, ip4addrSize)) >=0*/){
+		error = bind(s1, (struct sockaddr*) &ip4addr_any1, ip4addrSize);
 		bind(s2, (struct sockaddr*) &ip4addr_any2, ip4addrSize);
 		// I'm a server
 		ip4addr1 = ip4addr_any1;
