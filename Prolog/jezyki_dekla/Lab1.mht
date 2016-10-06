@@ -1,0 +1,71 @@
+From: "Saved by Internet Explorer 11"
+Subject: Christoph Schwarzweller: Prolog
+Date: Fri, 4 Dec 2015 13:14:09 +0100
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://inf.ug.edu.pl/~schwarzw/zadania/ZadProlog2015-16.html
+X-MimeOLE: Produced By Microsoft MimeOLE V10.0.10011.16384
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><META content=3D"IE=3D5.0000" =
+http-equiv=3D"X-UA-Compatible">
+<TITLE>Christoph Schwarzweller: Prolog</TITLE>	=20
+<META http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dutf-8"><LINK href=3D"../cs.css"=20
+rel=3D"stylesheet" type=3D"text/css">=20
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.10586.17"></HEAD>=20
+<BODY class=3D"main"><BR>
+<H2> Zadania (Prolog) </H2>
+<OL>
+  <LI> D=C5=82ugo=C5=9B=C4=87 listy  mo=C5=BCna w Prologu =
+zdefiniowa=C4=87 nast=C4=99puj=C4=85co.=20
+<PRE>  length(0, []).=0A=
+  length(N, [_|L]) :- length(M, L), N is M+1.=0A=
+</PRE>	=09
+  Prosz=C4=99 zdefiniowa=C4=87 predykaty <TT>fib/2</TT> oraz =
+<TT>nwd/3</TT>.  <BR><BR>
+  <LI> Niech b=C4=99dzie dana baza danych zawieraj=C4=85ca predykaty =
+<TT>parent/2</TT>,=20
+  <TT>female/1</TT>      i <TT>male/1</TT>. <BR>Prosz=C4=99 =
+zdefiniowa=C4=87 predykaty=20
+  <TT>child/2</TT>, <TT>mother/2</TT>, <TT>sister/2</TT>, =20
+  <TT>has_a_child/1</TT>, <TT>grandparent/2</TT>  oraz =
+<TT>predecessor/2</TT>.=20
+  <BR><BR>
+  <LI> Niech b=C4=99d=C4=85 dane nast=C4=99puj=C4=85ce predykaty.				 =20
+<PRE> q<SUB>1</SUB>(X,Y) :- p(X,Y).                q<SUB>2</SUB>(X,Y) :- =
+p(X,Z), q<SUB>2</SUB>(Z,Y).=0A=
+ q<SUB>1</SUB>(X,Y) :- p(X,Z), q<SUB>1</SUB>(Z,Y).       =
+q<SUB>2</SUB>(X,Y) :- p(X,Y).  =0A=
+=0A=
+ q<SUB>3</SUB>(X,Y) :- p(X,Y).                q<SUB>4</SUB>(X,Y) :- =
+q<SUB>4</SUB>(X,Z), p(Z,Y).  =0A=
+ q<SUB>3</SUB>(X,Y) :- q<SUB>3</SUB>(X,Z), p(Z,Y).       =
+q<SUB>4</SUB>(X,Y) :- p(X,Y).  </PRE>
+  				 oraz baza danych dla predykat <TT>p</TT>:				=20
+<PRE> p(pam,bob).       =0A=
+ p(tom,bob).=0A=
+ p(tom,liz).=0A=
+ p(bob,ann).      =0A=
+ p(bob,pat).     =0A=
+ p(pat,jim). </PRE>
+  				 Przy u=C5=BCyciu "drzew odpowiedzi" prosz=C4=99 ilustrowa=C4=87, =
+jak Prolog odpowiada na=20
+   pytania <TT>q<SUB>i</SUB>(tom,pat).</TT> oraz=20
+  <TT>q<SUB>i</SUB>(liz,jim)</TT>. <BR><BR>
+  <LI> Niech b=C4=99dzie dany nast=C4=99puj=C4=85cy program. 				=20
+<PRE> f(1,one).=0A=
+ f(s(1),two).=0A=
+ f(s(s(1)),three).=0A=
+ f(s(s(s(X))),N) :- f(X,N). </PRE>
+  				Jak odpowiada Prolog na pytanie				  <BR>
+  <OL type=3D"a">
+    <LI><TT>f(s(1),A)</TT>?					 =20
+    <LI><TT>f(s(s(1)),two)</TT>?					 =20
+    <LI><TT>f(s(s(s(s(s(s(1)))))),C)</TT>?                               =
+     =20
+    <LI><TT>f(D,three)</TT>?                                    =20
+    <LI><TT>f(s(s(s(s(s(s(X)))))),E)</TT>?				 =20
+</LI></OL><BR></LI></OL></BODY></HTML>

@@ -1,0 +1,12 @@
+(define (make-account balance)
+	(define (withdraw amount)
+		(if (>= balance amount)
+			(sequence (set! balance (- balance amount)))
+			balance
+			'Insufissient founds '))
+	(define (deposit amount) ...)
+	(define (dispatch m)
+		(cond ((eq? m 'widthdraw) withdraw)
+			((eq? m 'deposit) deposit)
+			(else 'Not implemented)))
+	dispatch)
